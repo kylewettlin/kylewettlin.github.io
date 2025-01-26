@@ -1,138 +1,138 @@
 body {
-    background-color: #f1f1f1;
-    font-family: 'Ubuntu', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
+  background-color: #f1f1f1;
+  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-  #mainContainer, 
-  #assign2Container {
-    background-color: #fff;
-    width: 80%;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* HEADER */
+header {
+  background-color: #1e5180;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+}
+
+#headerContent h1 {
+  margin: 0;
+}
+
+.subTitle {
+  margin: 0;
+  font-weight: 300;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+#navLinks {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#navLinks li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+#navLinks li a:hover {
+  background-color: #2990cc;
+}
+
+/* MAIN WRAPPER */
+main {
+  background-color: #fff;
+  max-width: 1000px;     /* Ensures 3 cards of 300px + gaps fit within this container */
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#assignmentsHeading {
+  text-align: center;
+  color: #1e5180;
+}
+
+/* ASSIGNMENTS SECTION */
+#assignmentsSection {
+  display: flex;
+  justify-content: center;
+  gap: 20px;        /* space between cards */
+  flex-wrap: wrap;  /* allows wrapping on small screens */
+  margin-top: 2rem;
+}
+
+/* EACH ASSIGNMENT CARD */
+.assignmentCard {
+  background-color: #eef3f8;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;     /* so that exactly 3 cards can fit on a wide row */
+  padding: 1rem;
+}
+
+.assignmentCard h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+/* FORCED IMAGE DIMENSIONS */
+.assignmentCard img {
+  width: 300px;
+  height: 150px; 
+  border: 2px solid #1e5180;
+  margin-bottom: 1rem;
+  object-fit: cover;     /* keeps aspect ratio but crops if necessary */
+}
+
+/* CARD TEXT */
+.assignmentCard p {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* MAKE THE ENTIRE CARD CLICKABLE */
+.assignmentCard a.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.assignmentCard a.cardLink:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer; 
+}
+
+/* HIGHLIGHT CARD BORDER ON HOVER */
+.assignmentCard:hover {
+  border: 1px solid #2990cc;
+}
+
+/* RESPONSIVE BEHAVIOR */
+@media (max-width: 768px) {
+  #assignmentsSection {
+    flex-direction: column;
+    align-items: center;
   }
 
-  h1 {
-    text-align: center;
-    margin-top: 0;
-    color: #1e5180;
-  }
-  
-  h1:hover {
-    color: #2990cc;
-  }
-  
-  h2 {
-    color: #333;
-  }
-
-  #introDiv p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
+  .assignmentCard {
+    width: 80%;  
     margin-bottom: 20px;
   }
-  
+}
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  ul li {
-    margin-bottom: 10px;
-  }
-  
-  .assignmentLink {
-    display: inline-block;        
-    padding: 5px 10px;
-    border-radius: 4px;
-    background-color: #efefef;
-    color: #1e5180;
-    text-decoration: none;         
-    transition: background-color 0.3s;
-  }
-  
-  .assignmentLink:hover {
-    background-color: #d4d4d4;
-  }
-  
-
-  #navLinks {
-    display: flex;
-    justify-content: center;
-    background-color: #1e5180;
-    border-radius: 5px;
-    overflow: hidden;
-    padding-left: 0;
-    margin-bottom: 20px;
-  }
-  
-  #navLinks li {
-    list-style: none;
-  }
-  
-  #navLinks a {
-    display: block;
-    padding: 10px 15px;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  #navLinks a:hover {
-    background-color: #2990cc;
-  }
-  
-  #assign2Container p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  #imageContainer {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-bottom: 30px;
-  }
-  
-  .imageClass {
-    border: 2px solid #1e5180;
-    padding: 4px;
-    width: 200px;
-    transition: border 0.3s;
-  }
-  
-  .imageClass:hover {
-    border: 2px dotted #2990cc;
-  }
-  
-  #infoTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-  }
-  
-  #infoTable thead {
-    background-color: #1e5180;
-    color: #fff;
-  }
-  
-  #infoTable th, 
-  #infoTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  #infoTable tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #1e5180;
+  color: #fff;
+}

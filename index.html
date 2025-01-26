@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>CSCE 242: Kyle Wettlin</title>
   <link rel="stylesheet" href="styles.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link 
@@ -11,25 +12,73 @@
     rel="stylesheet"
   >
 </head>
-<body id="mainBody">
-  <div id="mainContainer">
-    <h1>CSCE 242</h1>
+<body>
 
-    <div id="introDiv">
-      <h2>Hello! Welcome to Kyle Wettlin's Website for CSCE 242!</h2>
-      <p>
-        This class will teach me how to develop and design webpage applications.
-      </p>
+  <header>
+    <div id="headerContent">
+      <h1>CSCE 242: Webpage Applications</h1>
+      <p class="subTitle">Kyle Wettlin</p>
     </div>
+    
+    <nav>
+      <ul id="navLinks">
+        <li><a href="#assignmentsSection">Assignments</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <h2>Assignments</h2>
-    <ul>
-      <li><a class="assignmentLink" href="Assignments/assignment1.html">Assignment 1</a></li>
-      <li><a class="assignmentLink" href="Assignments/assignment2.html">Assignment 2</a></li>
-      <li><a class="assignmentLink" href="Assignments/assignment3.html">
-        Assignment 3 (Flexbox)
-      </a></li>
-    </ul>
-  </div>
+  <main>
+    <section id="assignmentsSection">
+  
+      <article class="assignmentCard">
+        <a href="Assignments/assignment1.html" class="cardLink">
+          <h3>Assignment 1 – Basic HTML</h3>
+          <img 
+            src="Assignments\images\assignment1.png" 
+            alt="Screenshot of Assignment 1" 
+          />
+          <p>
+            This assignment was all about learning the basic structure 
+            of HTML (headers, paragraphs, lists, links). 
+          </p>
+        </a>
+      </article>
+    
+      <article class="assignmentCard">
+        <a href="Assignments/assignment2.html" class="cardLink">
+          <h3>Assignment 2 – Basic CSS</h3>
+          <img 
+            src="Assignments\images\assignment2.png" 
+            alt="Screenshot of Assignment 2" 
+          />
+          <p>
+            In this assignment, I learned fundamental CSS concepts for 
+            styling web pages. 
+          </p>
+        </a>
+      </article>
+    
+      <article class="assignmentCard">
+        <a href="Assignments/assignment3.html" class="cardLink">
+          <h3>Assignment 3 – Page Layout</h3>
+          <img 
+            src="Assignments\images\assignment3.png" 
+            alt="Screenshot of Assignment 3" 
+          />
+          <p>
+            This assignment I learned about flex boxes to keep webpages readable on different resolutions.
+          </p>
+        </a>
+      </article>
+    
+    
+    </section>
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Kyle Wettlin | CSCE 242</p>
+  </footer>
+
 </body>
 </html>

@@ -3,65 +3,128 @@
 <head>
   <meta charset="UTF-8" />
   <title>Assignment 3: Flexbox Layout</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link 
     href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" 
     rel="stylesheet" 
   />
-
-
   <link rel="stylesheet" href="assignment3.css" />
 </head>
 <body>
   <header>
-    <h1>Flexbox Demo</h1>
+    <h1 class="big-title">Layout with Flex</h1>
     <nav>
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Topics</a></li>
-        <li><a href="#">Resources</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Store</a></li>
+        <li><a href="#">Staff</a></li>
         <li><a href="#">Contact</a></li>
       </ul>
     </nav>
   </header>
-  
-  <section id="mainContent">
-    <aside>
-      <h2>Latest News</h2>
+
+  <section class="big-ideas">
+    <h2>Big Ideas!</h2>
+
+    <div class="idea-box idea1">
+      <h3>Idea 1</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-        Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Quisque convallis tortor at convallis sollicitudin.
       </p>
-      <img 
-        src="https://fakeimg.pl/200x200/b8b8b8/000000?text=Hi" 
-        alt="Placeholder 200x200" 
-      />
-    </aside>
+      <div class="placeholder teal-box">200 x 200</div>
+    </div>
+
+    <div class="idea-box idea2">
+      <h3>Idea 2</h3>
+      <p>
+        Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Curabitur imperdiet nulla at lorem consectetur suscipit.
+      </p>
+      <div class="placeholder orange-box">200 x 200</div>
+    </div>
     
-    <article>
-      <h2>Flexbox Layout Tutorial</h2>
+    <div class="idea-box idea3">
+      <h3>Idea 3</h3>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse 
-        posuere venenatis eros, nec consectetur felis ultricies in. Cras a 
-        elit nisl. Proin eu ipsum nisl.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+        nisi ut aliquip ex ea commodo consequat.
       </p>
-      <img 
-        src="https://fakeimg.pl/400x200/b8b8b8/000000?text=Hi" 
-        alt="Placeholder 400x200" 
-      />
-      <p>
-        Mauris suscipit sem ex, id commodo risus ultrices ut. Praesent sed 
-        bibendum justo. Fusce consectetur odio at massa elementum, non 
-        bibendum sapien congue. Quisque sed quam sed dui scelerisque 
-        sollicitudin in quis nisl.
-      </p>
-    </article>
+      <div class="placeholder teal-box">200 x 200</div>
+    </div>
   </section>
   
-  <footer>
-    <p>&copy; 2025 Kyle Wettlin. All Rights Reserved.</p>
-  </footer>
+  <section class="bottom-layout">
+    <div class="bottom-left">
+      <div class="bottom-item">
+        <h3>Title 1</h3>
+        <div class="placeholder pink-box">200 x 100</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 2</h3>
+        <div class="placeholder pink-box">200 x 100</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 3</h3>
+        <div class="placeholder pink-box">200 x 100</div>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 4</h3>
+        <div class="placeholder pink-box">200 x 100</div>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+    </div>
+    
+    <div class="bottom-center">
+      <h3>Links</h3>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+      </ul>
+    </div>
+    
+    <div class="bottom-right">
+      <div class="bottom-item">
+        <h3>Title 1</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 2</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 3</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 4</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 5</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </div>
+      <div class="bottom-item">
+        <h3>Title 6</h3>
+        <div class="placeholder teal-box small-box">200 x 50</div>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </div>
+    </div>
+    
+    <p class="bottom-credit">@kylewettlin.com</p>
+  </section>
 </body>
 </html>

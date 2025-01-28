@@ -1,0 +1,114 @@
+/* Structure */
+body {
+    background:url(images/bg.jpg);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#content {
+    background:white;
+    width:70%;
+    margin:auto; /* center */
+    padding:5px;
+    border: 1px solid darkblue;
+    border-radius:5px;
+    box-shadow: 10px 10px lightblue;
+}
+
+.idea {
+    padding:5px;
+}
+
+.idea:nth-child( even ) {
+    background: lightskyblue;
+}
+
+.idea-img {
+    margin-top:20px;
+    padding:5px;
+    text-align: center;
+}
+
+.gallery {
+    background: orange;
+}
+
+.links {
+    background: lightcoral;
+}
+
+.tile {
+    text-align:center;
+    padding:5px;
+}
+.node {
+    text-align:center;
+    padding:5px;
+}
+header, footer {
+    background:darkblue;
+    color:white;
+}
+
+/* Navigation */
+#main-nav ul {
+    padding-left:0;
+}
+
+#main-nav li {
+    list-style-type: none;  /* remove the bullets */
+    background: gray;
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+#main-nav a {
+    color:white;
+    text-decoration: none;  /* remove the underlines */
+    border-bottom:1px solid transparent;
+}
+
+#main-nav a:hover {
+    color:crimson;
+    border-bottom:1px solid white;
+}
+
+/* Typography */
+header h1 {
+    text-align: center;
+}
+
+footer p {
+    text-align:center;
+}
+
+/* Larger screens */
+@media only screen and (min-width: 760px) {
+   .columns {
+    display:flex;
+   }
+
+   #main-nav li {
+    flex:1; 
+   }
+    #main-nav li:not(:last-child) {
+    border-right: 1px solid white; 
+   }
+   .gallery {
+    flex-wrap:wrap;
+   }
+   .one {
+    flex:1;
+   }
+   .two {
+    flex:2;
+   }
+   .three {
+    flex:3;
+   }
+   .tile {
+    flex-basis:45%;
+   }
+   .node {
+    flex-basis:20%;
+   }
+}

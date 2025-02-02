@@ -163,7 +163,6 @@
 
 .sidebar-links li {
     margin-bottom: 0.5rem;
-    /* Add these lines: */
     border-bottom: 2px solid #000; 
     padding-left: 0.5rem;        
   }

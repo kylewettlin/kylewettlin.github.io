@@ -28,68 +28,124 @@
   </header>
 
   <main>
-    <section id="assignmentsSection">
-  
-      <article class="assignmentCard">
-        <a href="Assignments/assignment1.html" class="cardLink">
-          <h3>Assignment 1 – Basic HTML</h3>
-          <img 
-            src="Assignments\images\assignment1.png" 
-            alt="Screenshot of Assignment 1" 
-          />
-          <p>
-            This assignment was all about learning the basic structure 
-            of HTML (headers, paragraphs, lists, links). 
-          </p>
-        </a>
-      </article>
-    
-      <article class="assignmentCard">
-        <a href="Assignments/assignment2.html" class="cardLink">
-          <h3>Assignment 2 – Basic CSS</h3>
-          <img 
-            src="Assignments\images\assignment2.png" 
-            alt="Screenshot of Assignment 2" 
-          />
-          <p>
-            In this assignment, I learned fundamental CSS concepts for 
-            styling web pages. 
-          </p>
-        </a>
-      </article>
-    
-      <article class="assignmentCard">
-        <a href="Assignments/assignment3.html" class="cardLink">
-          <h3>Assignment 3 – Page Layout</h3>
-          <img 
-            src="Assignments\images\assignment3.png" 
-            alt="Screenshot of Assignment 3" 
-          />
-          <p>
-            This assignment I learned about flex boxes to keep webpages readable on different resolutions.
-          </p>
-        </a>
-      </article>
-      <article class="assignmentCard">
-        <a href="Assignments/recreate.html" class="cardLink">
-          <h3>Assignment 4 – Recreate </h3>
-          <img 
-            src="Assignments\images\assignment4.png" 
-            alt="Screenshot of Assignment 4" 
-          />
-          <p>
-            This assignment taught me how to recreate any webpage with CSS.
-          </p>
-        </a>
-      </article>
-    
-    </section>
-    
+    <div class="content-area">
+      <div class="toggle-container">
+        <button class="toggle-btn active" data-tab="assignments">Assignments</button>
+        <button class="toggle-btn" data-tab="projects">Projects</button>
+      </div>
+
+      <div class="tab-content" id="assignments-tab">
+        <section id="assignmentsSection">
+          <article class="assignmentCard">
+            <a href="Assignments/assignment1.html" class="cardLink">
+              <h3>Assignment 1 – Basic HTML</h3>
+              <img 
+                src="Assignments\images\assignment1.png" 
+                alt="Screenshot of Assignment 1" 
+              />
+              <p>
+                This assignment was all about learning the basic structure 
+                of HTML (headers, paragraphs, lists, links). 
+              </p>
+            </a>
+          </article>
+        
+          <article class="assignmentCard">
+            <a href="Assignments/assignment2.html" class="cardLink">
+              <h3>Assignment 2 – Basic CSS</h3>
+              <img 
+                src="Assignments\images\assignment2.png" 
+                alt="Screenshot of Assignment 2" 
+              />
+              <p>
+                In this assignment, I learned fundamental CSS concepts for 
+                styling web pages. 
+              </p>
+            </a>
+          </article>
+        
+          <article class="assignmentCard">
+            <a href="Assignments/assignment3.html" class="cardLink">
+              <h3>Assignment 3 – Page Layout</h3>
+              <img 
+                src="Assignments\images\assignment3.png" 
+                alt="Screenshot of Assignment 3" 
+              />
+              <p>
+                This assignment I learned about flex boxes to keep webpages readable on different resolutions.
+              </p>
+            </a>
+          </article>
+          <article class="assignmentCard">
+            <a href="Assignments/recreate.html" class="cardLink">
+              <h3>Assignment 4 – Recreate </h3>
+              <img 
+                src="Assignments\images\assignment4.png" 
+                alt="Screenshot of Assignment 4" 
+              />
+              <p>
+                This assignment taught me how to recreate any webpage with CSS.
+              </p>
+            </a>
+          </article>
+        
+        </section>
+      </div>
+
+      <div class="tab-content" id="projects-tab" style="display: none;">
+        <section id="assignmentsSection">
+          <article class="assignmentCard">
+            <a href="#" class="cardLink">
+              <h3>Topic</h3>
+              <img 
+                src="Assignments/images/topic.png"
+                alt="Project Screenshot" 
+              />
+              <p>
+               Project Topic
+              </p>
+            </a>
+          </article>
+          <article class="assignmentCard">
+            <a href="#" class="cardLink">
+              <h3>Wireframe</h3>
+              <img 
+                src="Assignments/images/wireframe.png"
+                alt="Project Screenshot" 
+              />
+              <p>
+               Project Wireframe
+              </p>
+            </a>
+          </article>
+        </section>
+      </div>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2025 Kyle Wettlin | CSCE 242</p>
   </footer>
+
+  <script>
+    const toggleBtns = document.querySelectorAll('.toggle-btn');
+    const tabs = document.querySelectorAll('.tab-content');
+
+    toggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.getAttribute('data-tab');
+        toggleBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        tabs.forEach(tab => {
+          if (tab.id === `${tabName}-tab`) {
+            tab.style.display = 'block';
+          } else {
+            tab.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>

@@ -23,81 +23,50 @@
   <main class="build-container">
     <h1>Build Your Composition</h1>
 
-    <form class="build-form">
+    <form class="build-form" id="compBuilder">
       <label for="comp-title">Composition Title:</label>
       <input type="text" id="comp-title" name="compTitle" placeholder="Enter composition name" required>
 
       <div class="agent-selection">
         <label for="agent1">Select Agent 1:</label>
-        <select id="agent1" name="agent1">
-          <option>Jett</option>
-          <option>Sage</option>
-          <option>Omen</option>
-          <option>Raze</option>
-          <option>Sova</option>
-          <option>Breach</option>
-          <option>Kayo</option>
-          <option>Cypher</option>
-          <!-- Add more agents here -->
+        <select id="agent1" name="agent1" required>
+          <option value="">Select an agent</option>
+          <!-- We'll populate these dynamically -->
         </select>
       </div>
 
       <div class="agent-selection">
         <label for="agent2">Select Agent 2:</label>
-        <select id="agent2" name="agent2">
-          <option>Jett</option>
-          <option>Sage</option>
-          <option>Omen</option>
-          <option>Raze</option>
-          <option>Sova</option>
-          <option>Breach</option>
-          <option>Kayo</option>
-          <option>Cypher</option>
+        <select id="agent2" name="agent2" required>
+          <option value="">Select an agent</option>
         </select>
       </div>
 
       <div class="agent-selection">
         <label for="agent3">Select Agent 3:</label>
-        <select id="agent3" name="agent3">
-          <option>Jett</option>
-          <option>Sage</option>
-          <option>Omen</option>
-          <option>Raze</option>
-          <option>Sova</option>
-          <option>Breach</option>
-          <option>Kayo</option>
-          <option>Cypher</option>
+        <select id="agent3" name="agent3" required>
+          <option value="">Select an agent</option>
         </select>
       </div>
 
       <div class="agent-selection">
         <label for="agent4">Select Agent 4:</label>
-        <select id="agent4" name="agent4">
-          <option>Jett</option>
-          <option>Sage</option>
-          <option>Omen</option>
-          <option>Raze</option>
-          <option>Sova</option>
-          <option>Breach</option>
-          <option>Kayo</option>
-          <option>Cypher</option>
+        <select id="agent4" name="agent4" required>
+          <option value="">Select an agent</option>
         </select>
       </div>
 
       <div class="agent-selection">
         <label for="agent5">Select Agent 5:</label>
-        <select id="agent5" name="agent5">
-          <option>Jett</option>
-          <option>Sage</option>
-          <option>Omen</option>
-          <option>Raze</option>
-          <option>Sova</option>
-          <option>Breach</option>
-          <option>Kayo</option>
-          <option>Cypher</option>
+        <select id="agent5" name="agent5" required>
+          <option value="">Select an agent</option>
         </select>
       </div>
 
+      <div class="preview-comp">
+        <h3>Preview:</h3>
+        <div class="comp-preview-container"></div>
+      </div>
 
       <button type="submit">Save Composition</button>
     </form>
@@ -106,5 +75,8 @@
   <footer class="site-footer">
     <p>© 2025 Valorant Comps. All rights reserved.</p>
   </footer>
+
+  <script src="scripts/compManager.js"></script>
+  <script src="scripts/buildComps.js"></script>
 </body>
 </html>

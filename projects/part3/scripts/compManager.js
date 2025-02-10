@@ -29,10 +29,11 @@ class CompositionManager {
   // Get all available agents
   getAgentList() {
     return [
-      'Astra', 'Breach', 'Brimstone', 'Chamber', 'Cypher', 
+      'Astra', 'Breach', 'Brimstone', 'Chamber', 'Clove', 'Cypher', 
       'Deadlock', 'Fade', 'Gekko', 'Harbor', 'Iso', 'Jett', 
       'Kayo', 'Killjoy', 'Neon', 'Omen', 'Phoenix', 'Raze', 
-      'Reyna', 'Sage', 'Skye', 'Sova', 'Viper', 'Yoru'
+      'Reyna', 'Sage', 'Skye', 'Sova', 'Tejo', 'Viper', 
+      'Vyse', 'Yoru'
     ].sort();
   }
 } 

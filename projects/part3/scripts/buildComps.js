@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const compManager = new CompositionManager();
   const form = document.getElementById('compBuilder');
   const previewContainer = document.querySelector('.comp-preview-container');
+  const mapSelect = document.getElementById('map-select');
+  const mapPreview = document.querySelector('.map-preview');
   
-  // Populate all select elements with agents
+  // Populate agent selects (excluding map-select)
   const agentList = compManager.getAgentList();
-  const selects = document.querySelectorAll('select');
+  const agentSelects = document.querySelectorAll('select[name^="agent"]');
   
-  selects.forEach(select => {
+  agentSelects.forEach(select => {
     agentList.forEach(agent => {
       const option = document.createElement('option');
       option.value = agent;
@@ -16,10 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Preview handling
+  // Populate map select separately
+  compManager.getMaps().forEach(map => {
+    const option = document.createElement('option');
+    option.value = map;
+    option.textContent = map;
+    mapSelect.appendChild(option);
+  });
+
+  // Preview handling (agents only)
   function updatePreview() {
     previewContainer.innerHTML = '';
-    selects.forEach(select => {
+    agentSelects.forEach(select => {
       if (select.value) {
         const img = document.createElement('img');
         img.src = `images/agents/${select.value}.png`;
@@ -29,16 +39,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  selects.forEach(select => {
+  agentSelects.forEach(select => {
     select.addEventListener('change', updatePreview);
+  });
+
+  // Handle map selection
+  mapSelect.addEventListener('change', () => {
+    const selectedMap = mapSelect.value;
+    if (selectedMap) {
+      mapPreview.innerHTML = `<img src="images/maps/${selectedMap}.png" alt="${selectedMap} map">`;
+    } else {
+      mapPreview.innerHTML = '';
+    }
   });
 
   // Form submission
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    // Check for duplicate agents
-    const selectedAgents = Array.from(selects).map(select => select.value);
+    const selectedAgents = Array.from(document.querySelectorAll('select[name^="agent"]'))
+      .map(select => select.value);
+    
     const uniqueAgents = new Set(selectedAgents);
     if (uniqueAgents.size !== 5) {
       alert('Please select 5 different agents');
@@ -46,16 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const composition = {
-      title: document.getElementById('comp-title').value,
+      map: mapSelect.value,
       agents: selectedAgents
     };
 
     compManager.saveComposition(composition);
     alert('Composition saved successfully!');
     form.reset();
+    mapPreview.innerHTML = '';
     previewContainer.innerHTML = '';
     
-    // Redirect to my-comps page
     window.location.href = 'my-comps.html';
   });
 }); 

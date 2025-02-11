@@ -1,6 +1,19 @@
 class CompositionManager {
   constructor() {
     this.storageKey = 'valorant-compositions';
+    this.maps = [
+      'Abyss',
+      'Ascent',
+      'Bind',
+      'Breeze',
+      'Fracture',
+      'Haven',
+      'Icebox',
+      'Lotus',
+      'Pearl',
+      'Split',
+      'Sunset'
+    ].sort();
   }
 
   // Get all saved compositions
@@ -13,8 +26,9 @@ class CompositionManager {
   saveComposition(composition) {
     const compositions = this.getCompositions();
     compositions.push({
-      id: Date.now(), // Use timestamp as unique ID
-      ...composition
+      id: Date.now(),
+      map: composition.map,
+      agents: composition.agents
     });
     localStorage.setItem(this.storageKey, JSON.stringify(compositions));
   }
@@ -35,5 +49,17 @@ class CompositionManager {
       'Reyna', 'Sage', 'Skye', 'Sova', 'Tejo', 'Viper', 
       'Vyse', 'Yoru'
     ].sort();
+  }
+
+  // Add map getter
+  getMaps() {
+    return this.maps;
+  }
+
+  // Add method to get compositions by map
+  getCompositionsByMap(map) {
+    const compositions = this.getCompositions();
+    if (!map || map === 'All Maps') return compositions;
+    return compositions.filter(comp => comp.map === map);
   }
 } 

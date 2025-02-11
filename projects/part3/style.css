@@ -164,16 +164,16 @@
   }
   
   .comp-item {
-    display: flex;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    align-items: center;
     background-color: #2c2c2c;
     border-radius: 8px;
     margin-bottom: 1rem;
-    padding: 1rem;
-    min-height: 120px; /* Set minimum height for the entire box */
-    position: relative; /* For absolute positioning of delete button */
-    border-left: 4px solid transparent;
-    transition: border-left-color 0.3s ease;
+    padding: 0; /* Remove padding to allow image to touch edges */
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
   }
   
   .comp-item:hover {
@@ -181,26 +181,28 @@
   }
   
   .comp-title {
-    width: 250px;
-    min-height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 2rem;
-    margin-left: 2.5rem;
-    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    min-height: auto;
+    border-bottom: 2px solid #ff4655;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   
   .comp-title h2 {
-    margin-bottom: 0.3rem;
+    color: #ff4655;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
   }
   
   .comp-agents {
     display: flex;
-    flex: 1;
-    justify-content: space-around;
     gap: 1rem;
-    align-items: center; /* Center agents vertically */
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 0.5rem 0;
   }
   
   .comp-agents a {
@@ -400,16 +402,17 @@
     }
   
     .comp-item {
-      flex-direction: column;
-      align-items: flex-start;
+      grid-template-columns: 1fr;
+      grid-template-rows: 120px auto;
     }
-    .comp-title {
-      margin-bottom: 1rem;
-      margin-right: 0;
-      max-width: 100%;
+  
+    .map-background {
+      grid-row: 1;
+      border-radius: 8px 8px 0 0;
     }
-    .comp-agents {
-      justify-content: flex-start;
+  
+    .comp-content {
+      grid-row: 2;
     }
   }
   
@@ -585,5 +588,74 @@
     .info-section {
       padding: 2rem 1rem;
     }
+  }
+  
+  /* Map Selection Styles */
+  .map-selection-container {
+    display: flex;
+    margin-bottom: 2rem;
+    background: #2c2c2c;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .map-preview {
+    width: 300px;
+    height: 169px; /* 16:9 aspect ratio */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .map-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .map-select-wrapper {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Update map background container */
+  .map-background {
+    position: relative; /* Changed from absolute */
+    height: 100%;
+    width: 100%;
+    grid-column: 1;
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;
+  }
+  
+  .map-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* New content wrapper */
+  .comp-content {
+    grid-column: 2;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Map filter styles */
+  .map-filter {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  
+  .map-filter select {
+    padding: 0.5rem 1rem;
+    background-color: #2c2c2c;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 4px;
   }
   

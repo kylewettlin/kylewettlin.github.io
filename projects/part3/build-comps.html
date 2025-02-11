@@ -24,14 +24,22 @@
     <h1>Build Your Composition</h1>
 
     <form class="build-form" id="compBuilder">
-      <label for="comp-title">Composition Title:</label>
-      <input type="text" id="comp-title" name="compTitle" placeholder="Enter composition name" required>
+      <div class="map-selection-container">
+        <div class="map-preview">
+          <!-- Map preview will be shown here -->
+        </div>
+        <div class="map-select-wrapper">
+          <label for="map-select">Select Map:</label>
+          <select id="map-select" name="map" required>
+            <option value="">Choose a map</option>
+          </select>
+        </div>
+      </div>
 
       <div class="agent-selection">
         <label for="agent1">Select Agent 1:</label>
         <select id="agent1" name="agent1" required>
           <option value="">Select an agent</option>
-          <!-- We'll populate these dynamically -->
         </select>
       </div>
 

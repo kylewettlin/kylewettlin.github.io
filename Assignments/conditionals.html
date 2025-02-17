@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 8 - If Statements</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f3f3e7; 
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+    }
+
+    #menuToggle {
+      display: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #menuArrow {
+      margin-left: 5px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex; 
+      justify-content: center;
+      margin-top: 10px;
+    }
+    nav ul li {
+      margin: 0 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    nav ul li:not(:last-child)::after {
+      content: "|";
+      margin: 0 10px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    #travelSection, #heartSection {
+      display: none; 
+      border: 1px solid #ccc;
+      background: #fff;
+      margin: 20px auto;
+      padding: 20px;
+      width: 300px;
+    }
+
+    .heart {
+      font-size: 100px;
+      color: white; 
+      margin: 20px;
+      display: inline-block;
+    }
+
+    .btn {
+      margin: 5px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      #menuToggle {
+        display: inline-block;
+      }
+      nav ul {
+        display: none;  
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul li:not(:last-child)::after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Assignment 8: If Statements</h1>
+  <div id="menuToggle" onclick="toggleMenu()">
+    Menu <span id="menuArrow">&#9660;</span>
+  </div>
+  <nav>
+    <ul id="menuItems">
+      <li onclick="showExercise(1)">Exercise 1</li>
+      <li onclick="showExercise(2)">Exercise 2</li>
+    </ul>
+  </nav>
+</header>
+
+<div class="content">
+  <div id="travelSection">
+    <h2>Travelling</h2>
+    <p>Enter your mode of Transportation</p>
+    <input 
+      type="text" 
+      id="transportInput" 
+      oninput="updateTransportImage()" 
+      placeholder="bike, scooter, car, skateboard"
+    >
+    <br><br>
+    <img 
+      id="transportImg" 
+      src="" 
+      alt="Transportation" 
+      style="max-width:200px; display:none;"
+    >
+  </div>
+
+  <div id="heartSection">
+    <h2>Color My Heart</h2>
+    <span class="heart" id="heart">&#10084;</span>
+    <br>
+    <button class="btn" onclick="changeHeartColor('red')">Red</button>
+    <button class="btn" onclick="changeHeartColor('green')">Green</button>
+    <button class="btn" onclick="changeHeartColor('blue')">Blue</button>
+  </div>
+</div>
+
+<script>
+  const transportImages = {
+    bike:       'images/bike.png',
+    scooter:    'images/scooter.png',
+    car:        'images/car.png',
+    skateboard: 'images/skateboard.png'
+  };
+
+  function toggleMenu() {
+    const menuItems = document.getElementById('menuItems');
+    const arrow = document.getElementById('menuArrow');
+    if (menuItems.style.display === 'none' || menuItems.style.display === '') {
+      menuItems.style.display = 'flex';  // show items
+      arrow.innerHTML = '&#9650;';       // up arrow
+    } else {
+      menuItems.style.display = 'none';  // hide items
+      arrow.innerHTML = '&#9660;';       // down arrow
+    }
+  }
+
+  function showExercise(ex) {
+    document.getElementById('travelSection').style.display = (ex === 1) ? 'block' : 'none';
+    document.getElementById('heartSection').style.display = (ex === 2) ? 'block' : 'none';
+  }
+
+  function updateTransportImage() {
+    const inputVal = document.getElementById('transportInput').value.trim().toLowerCase();
+    const img = document.getElementById('transportImg');
+
+    if (transportImages[inputVal]) {
+      img.src = transportImages[inputVal];
+      img.style.display = 'block';
+    } else {
+      img.style.display = 'none';
+    }
+  }
+
+  function changeHeartColor(color) {
+    document.getElementById('heart').style.color = color;
+  }
+</script>
+
+</body>
+</html>

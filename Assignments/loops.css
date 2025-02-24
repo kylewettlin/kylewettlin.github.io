@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    background-color: #f7f7f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    color: #5a7d7c;
+    margin-top: 1rem;
+  }
+  
+  h2 {
+    color: #d68993;
+    margin-bottom: 1rem;
+  }
+  #ladderContainer {
+    margin: 0 auto;
+    position: relative; 
+    width: 100px;
+    height: 400px;
+    background-color: #f7f7f0; 
+  }
+  
+  #leftRail, 
+  #rightRail {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: black;
+    z-index: 5;
+  }
+  
+  #leftRail {
+    left: 0;
+  }
+  
+  #rightRail {
+    right: 0;
+  }
+  
+  .rung {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: black;
+  }
+  
+  #climber {
+    position: absolute;
+    width: 60px;
+    height: 80px;
+    left: 20px;
+    bottom: 0;
+    transition: top 0.5s ease-in-out;
+    z-index: 10;
+  }
+  

@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <!-- Header & Navigation -->
   <header class="site-header">
     <nav class="navbar">
       <div class="hamburger-menu">
@@ -25,12 +24,9 @@
     </nav>
   </header>
 
-  <!-- Page Content -->
   <main class="comps-container">
     <h1 class="agent-list-title">My Compositions</h1>
     <hr class="agent-list-divider">
-
-    <!-- Empty State Placeholder - will be hidden when compositions exist -->
     <div id="empty-comps-state" class="empty-comps-state">
       <div class="empty-state-icon">
         <img src="images/agents/Jett.png" alt="Empty State Icon">
@@ -44,30 +40,20 @@
         Create Your First Composition
         <span class="button-arrow">→</span>
       </a>
-      
-
-    <!-- User's compositions will be displayed here -->
-  
 
   <footer class="site-footer">
     <p>© 2025 Valorant Comps. All rights reserved.</p>
   </footer>
 
-  <!-- Add before closing body tag -->
   <script src="scripts/compManager.js"></script>
   <script src="scripts/myComps.js"></script>
-  
-  <!-- Script to toggle empty state visibility -->
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const savedComps = document.getElementById('saved-comps');
       const emptyState = document.getElementById('empty-comps-state');
-      
-      // Check if there are any compositions (for demo, we're checking for comp-item elements)
-      // In a real app, this would check a database or localStorage
+
       const hasCompositions = savedComps.querySelectorAll('.comp-item').length > 0;
-      
-      // Show/hide appropriate elements
       if (hasCompositions) {
         emptyState.style.display = 'none';
         savedComps.style.display = 'block';

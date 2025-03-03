@@ -1,5 +1,26 @@
 // scripts.js
 
+// Hamburger menu toggle
+const hamburgerMenu = document.querySelector('.hamburger-menu');
+const navbarLinks = document.querySelector('.navbar-links');
+
+if (hamburgerMenu) {
+  hamburgerMenu.addEventListener('click', function() {
+    this.classList.toggle('change');
+    navbarLinks.classList.toggle('active');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const isClickInside = hamburgerMenu.contains(event.target) || navbarLinks.contains(event.target);
+    if (!isClickInside && navbarLinks.classList.contains('active')) {
+      hamburgerMenu.classList.remove('change');
+      navbarLinks.classList.remove('active');
+    }
+  });
+}
+
+// Carousel functionality
 let slideIndex = 0;
 const slides = document.querySelectorAll(".slide");
 const prevBtn = document.querySelector(".prev-btn");

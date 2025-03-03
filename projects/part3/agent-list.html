@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>Valorant Comps - Agent List</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <!-- Header & Navigation -->
   <header class="site-header">
     <nav class="navbar">
+      <div class="hamburger-menu">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
       <ul class="navbar-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="my-comps.html">My Comps</a></li>
@@ -210,18 +216,258 @@
     <p>© 2025 Valorant Comps. All rights reserved.</p>
   </footer>
 
+  <!-- Agent Modal -->
+  <div id="agentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div class="modal-header">
+        <div class="agent-image-container">
+          <img id="modalAgentImage" src="" alt="Agent">
+        </div>
+        <div class="agent-header-info">
+          <h2 id="modalAgentName"></h2>
+          <p id="modalAgentRole"></p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="agent-description-container">
+          <h3>Description</h3>
+          <p id="modalAgentDescription"></p>
+        </div>
+        <div class="agent-abilities-container">
+          <h3>Abilities</h3>
+          <div id="modalAgentAbilities">
+            <p>This agent's abilities information will be displayed here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const agentCards = document.querySelectorAll('.agent-card');
+    const modal = document.getElementById('agentModal');
+    const closeModal = document.querySelector('.close-modal');
     
-    // Function to handle card clicks
+    // Function to handle card clicks - open modal
     function handleCardClick(card) {
-      card.classList.toggle('active');
-      agentCards.forEach(otherCard => {
-        if (otherCard !== card) {
-          otherCard.classList.remove('active');
-        }
-      });
+      // Get agent information
+      const agentName = card.querySelector('h2').textContent;
+      const agentRole = card.querySelector('p').textContent;
+      const agentDescription = card.querySelector('.agent-description').textContent;
+      const agentImage = card.querySelector('img').src;
+      
+      // Populate modal
+      document.getElementById('modalAgentName').textContent = agentName;
+      document.getElementById('modalAgentRole').textContent = agentRole;
+      document.getElementById('modalAgentDescription').textContent = agentDescription;
+      document.getElementById('modalAgentImage').src = agentImage;
+      
+      // Add agent-specific abilities based on agent name
+      populateAgentAbilities(agentName);
+      
+      // Show modal
+      modal.style.display = 'block';
+      
+      // Prevent scrolling when modal is open
+      document.body.style.overflow = 'hidden';
     }
+    
+    // Function to populate agent abilities
+    function populateAgentAbilities(agentName) {
+      const abilitiesContainer = document.getElementById('modalAgentAbilities');
+      let abilitiesHTML = '';
+      
+      // Define abilities for each agent
+      const agentAbilities = {
+        'Brimstone': [
+          { name: 'Incendiary', description: 'Launch an incendiary grenade that deploys a damaging field of fire.' },
+          { name: 'Sky Smoke', description: 'Deploy a tactical map to call in orbital smoke drops.' },
+          { name: 'Stim Beacon', description: 'Deploy a stim beacon that gives rapid fire to all players in its zone.' },
+          { name: 'Orbital Strike (Ultimate)', description: 'Call in an orbital strike laser that deals high damage over time.' }
+        ],
+        'Viper': [
+          { name: 'Poison Cloud', description: 'Deploy a gas emitter that can be reactivated to create a toxic cloud.' },
+          { name: 'Toxic Screen', description: 'Deploy a line of gas that can be reactivated to create a toxic wall.' },
+          { name: 'Snake Bite', description: 'Fire a projectile that creates a pool of acid that damages and slows enemies.' },
+          { name: 'Viper\'s Pit (Ultimate)', description: 'Emit a toxic cloud that reduces the vision range and maximum health of enemies.' }
+        ],
+        'Omen': [
+          { name: 'Paranoia', description: 'Fire a shadow projectile that blinds enemies it touches.' },
+          { name: 'Dark Cover', description: 'Cast a shadow orb to create a long-lasting smoke cloud.' },
+          { name: 'Shrouded Step', description: 'Teleport a short distance after a delay.' },
+          { name: 'From the Shadows (Ultimate)', description: 'Teleport to any point on the map. Can be cancelled to fake a teleport.' }
+        ],
+        'Clove': [
+          { name: 'Pick-Me-Up', description: 'Throw a healing vial that restores health over time.' },
+          { name: 'Not Dead Yet', description: 'When downed, temporarily revive yourself and fight in a ghostly form.' },
+          { name: 'Meddle', description: 'Deploy a device that slows and disrupts enemies in its radius.' },
+          { name: 'Ruse (Ultimate)', description: 'Revive dead allies for a limited time as ghostly versions of themselves.' }
+        ],
+        'Astra': [
+          { name: 'Nova Pulse', description: 'Place a star and activate it to concuss all players in the area.' },
+          { name: 'Nebula', description: 'Place a star and activate it to transform it into a smoke.' },
+          { name: 'Gravity Well', description: 'Place a star and activate it to pull players toward the center.' },
+          { name: 'Astral Form/Cosmic Divide (Ultimate)', description: 'Enter astral form and place a cosmic wall that blocks bullets and dampens sound.' }
+        ],
+        'Harbor': [
+          { name: 'Cove', description: 'Deploy a sphere of water that shields against bullets.' },
+          { name: 'Cascade', description: 'Send a wave of water forward that creates a movable wall.' },
+          { name: 'High Tide', description: 'Deploy a wall of water that can be bent and shaped.' },
+          { name: 'Reckoning (Ultimate)', description: 'Summon a geyser pool that stuns enemies caught in it.' }
+        ],
+        'Sova': [
+          { name: 'Shock Bolt', description: 'Fire an explosive bolt that damages enemies in its radius.' },
+          { name: 'Recon Bolt', description: 'Fire a bolt that reveals the location of nearby enemies.' },
+          { name: 'Owl Drone', description: 'Deploy a drone that can fire a marking dart to reveal enemies.' },
+          { name: 'Hunter\'s Fury (Ultimate)', description: 'Fire up to three energy blasts that penetrate walls and damage enemies.' }
+        ],
+        'Fade': [
+          { name: 'Seize', description: 'Throw an orb that creates a tether, revealing and slowing enemies.' },
+          { name: 'Haunt', description: 'Throw an orb that reveals enemies in its line of sight.' },
+          { name: 'Prowler', description: 'Send out a creature that seeks out enemies and nearsights them.' },
+          { name: 'Nightfall (Ultimate)', description: 'Send out a wave of nightmare energy that deafens and decays enemies.' }
+        ],
+        'Tejo': [
+          { name: 'Blinder', description: 'Deploy a sensor that flashes enemies who cross its line of sight.' },
+          { name: 'Stealth Drone', description: 'Send out a drone that provides silent reconnaissance.' },
+          { name: 'Guided Salvo', description: 'Fire a cluster of guided missiles that follow the crosshair.' },
+          { name: 'Targeting Interface (Ultimate)', description: 'Activate a targeting system that highlights enemies through walls for precision shots.' }
+        ],
+        'Breach': [
+          { name: 'Flashpoint', description: 'Fire a blinding charge through walls.' },
+          { name: 'Fault Line', description: 'Create a seismic blast that dazes enemies in its path.' },
+          { name: 'Aftershock', description: 'Charge up a damaging explosion that fires through walls.' },
+          { name: 'Rolling Thunder (Ultimate)', description: 'Send a cascading quake that knocks up and stuns enemies.' }
+        ],
+        'KAY/O': [
+          { name: 'FLASH/drive', description: 'Throw a flash grenade that explodes after a short fuse.' },
+          { name: 'ZERO/point', description: 'Throw a blade that suppresses enemies hit, preventing ability usage.' },
+          { name: 'FRAG/ment', description: 'Throw a fragment grenade that explodes multiple times.' },
+          { name: 'NULL/cmd (Ultimate)', description: 'Overload yourself with polarized radianite energy, empowering KAY/O and allowing him to be revived.' }
+        ],
+        'Skye': [
+          { name: 'Trailblazer', description: 'Control a Tasmanian tiger that can leap forward and concuss enemies.' },
+          { name: 'Guiding Light', description: 'Control a hawk that transforms into a flash.' },
+          { name: 'Regrowth', description: 'Heal allies in range and yourself over time.' },
+          { name: 'Seekers (Ultimate)', description: 'Send out three seekers that hunt down the three closest enemies.' }
+        ],
+        'Gekko': [
+          { name: 'Wingman', description: 'Deploy a creature that can plant or defuse the spike, or detonate to stun enemies.' },
+          { name: 'Dizzy', description: 'Send a plasma blob that blinds enemies in its line of sight.' },
+          { name: 'Mosh Pit', description: 'Throw a creature that explodes and damages enemies in its radius.' },
+          { name: 'Thrash (Ultimate)', description: 'Control a creature that explodes on contact with enemies, detaining them.' }
+        ],
+        'Phoenix': [
+          { name: 'Curveball', description: 'Cast a flare orb that blinds enemies who look at it.' },
+          { name: 'Hot Hands', description: 'Throw a fireball that explodes and creates a zone that damages enemies and heals Phoenix.' },
+          { name: 'Blaze', description: 'Create a wall of fire that blocks vision and damages enemies.' },
+          { name: 'Run it Back (Ultimate)', description: 'Mark your location and resurrect there after death or when the ability ends.' }
+        ],
+        'Jett': [
+          { name: 'Updraft', description: 'Propel yourself upward into the air.' },
+          { name: 'Tailwind', description: 'Dash a short distance in the direction you\'re moving.' },
+          { name: 'Cloudburst', description: 'Throw a cloud of fog that obscures vision.' },
+          { name: 'Blade Storm (Ultimate)', description: 'Equip a set of throwing knives that reset on kills.' }
+        ],
+        'Raze': [
+          { name: 'Blast Pack', description: 'Throw a C4 pack that can be detonated to damage enemies or propel Raze.' },
+          { name: 'Paint Shells', description: 'Throw a grenade that creates smaller cluster grenades.' },
+          { name: 'Boom Bot', description: 'Deploy a bot that travels in a straight line and explodes on enemy contact.' },
+          { name: 'Showstopper (Ultimate)', description: 'Equip a rocket launcher that deals massive area damage.' }
+        ],
+        'Reyna': [
+          { name: 'Devour', description: 'Consume a soul orb from a killed enemy to heal rapidly.' },
+          { name: 'Dismiss', description: 'Consume a soul orb to become invulnerable and invisible for a short time.' },
+          { name: 'Leer', description: 'Cast an eye that blinds enemies who look at it.' },
+          { name: 'Empress (Ultimate)', description: 'Enter a frenzy, increasing firing, equip and reload speed. Gain infinite charges of Soul Harvest abilities.' }
+        ],
+        'Yoru': [
+          { name: 'Blindside', description: 'Throw a flash that activates when it bounces off surfaces.' },
+          { name: 'Gatecrash', description: 'Place a teleport anchor and teleport to it later.' },
+          { name: 'Fakeout', description: 'Send out a fake Yoru clone that explodes and blinds enemies when shot.' },
+          { name: 'Dimensional Drift (Ultimate)', description: 'Become invisible and invulnerable to enemies, capable of seeing between dimensions.' }
+        ],
+        'Iso': [
+          { name: 'Double Tap', description: 'Focus for a precise shot that penetrates enemies and objects.' },
+          { name: 'Contingency', description: 'Place a contingency shield that activates when you\'re attacked.' },
+          { name: 'Kill Contract', description: 'Mark an enemy with a contract, gaining buffs when you eliminate them.' },
+          { name: 'Checkmate (Ultimate)', description: 'Unleash a powerful energy field that grants enhanced precision and abilities.' }
+        ],
+        'Killjoy': [
+          { name: 'Alarmbot', description: 'Deploy a bot that hunts down enemies and explodes, applying vulnerability.' },
+          { name: 'Turret', description: 'Deploy an automated turret that fires at enemies in a 180-degree cone.' },
+          { name: 'Nanoswarm', description: 'Throw a grenade that deploys a swarm of damaging nanobots when activated.' },
+          { name: 'Lockdown (Ultimate)', description: 'Deploy a device that detains all enemies in range after a delay.' }
+        ],
+        'Cypher': [
+          { name: 'Trapwire', description: 'Place a tripwire that reveals and stuns enemies who cross it.' },
+          { name: 'Cyber Cage', description: 'Throw a cage that can be activated to create a vision-blocking smoke.' },
+          { name: 'Spycam', description: 'Place a camera that can fire tracking darts.' },
+          { name: 'Neural Theft (Ultimate)', description: 'Extract information from an enemy corpse to reveal the location of all living enemies.' }
+        ],
+        'Sage': [
+          { name: 'Healing Orb', description: 'Heal an ally or yourself over time.' },
+          { name: 'Barrier Orb', description: 'Create a large, solid wall.' },
+          { name: 'Slow Orb', description: 'Throw an orb that creates a slowing field.' },
+          { name: 'Resurrection (Ultimate)', description: 'Target a dead ally to revive them with full health.' }
+        ],
+        'Chamber': [
+          { name: 'Headhunter', description: 'Equip a heavy pistol with high precision.' },
+          { name: 'Rendezvous', description: 'Place two teleport anchors and teleport between them.' },
+          { name: 'Trademark', description: 'Place a trap that scans and slows enemies.' },
+          { name: 'Tour De Force (Ultimate)', description: 'Equip a powerful custom sniper rifle that kills enemies with any direct hit.' }
+        ],
+        'Deadlock': [
+          { name: 'Sonic Sensor', description: 'Deploy a sensor that slows enemies who trigger it with noise.' },
+          { name: 'Barrier Mesh', description: 'Throw discs that deploy a barrier wall.' },
+          { name: 'GravNet', description: 'Throw a grenade that detonates and pulls enemies to the center.' },
+          { name: 'Annihilation (Ultimate)', description: 'Fire a nanowire that captures and encases the first enemy hit in a cocoon.' }
+        ],
+        'Vyse': [
+          { name: 'Thorns', description: 'Deploy metallic thorns that damage and slow enemies.' },
+          { name: 'Forge', description: 'Create a metal barrier that can be reinforced.' },
+          { name: 'Blade Storm', description: 'Send out a wave of metal shards that ricochet off surfaces.' },
+          { name: 'Ferromancy (Ultimate)', description: 'Control metal in the environment, creating a deadly zone of floating blades.' }
+        ],
+        // Default abilities if the agent isn't specifically defined
+        'default': [
+          { name: 'Ability 1', description: 'Description for ability 1.' },
+          { name: 'Ability 2', description: 'Description for ability 2.' },
+          { name: 'Ability 3', description: 'Description for ability 3.' },
+          { name: 'Ultimate', description: 'Description for ultimate ability.' }
+        ]
+      };
+      
+      // Get the abilities for the specific agent, or use default if not defined
+      const abilities = agentAbilities[agentName] || agentAbilities['default'];
+      
+      // Build HTML for abilities
+      abilities.forEach(ability => {
+        abilitiesHTML += `
+          <div class="ability">
+            <h4>${ability.name}</h4>
+            <p>${ability.description}</p>
+          </div>
+        `;
+      });
+      
+      abilitiesContainer.innerHTML = abilitiesHTML;
+    }
+    
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    });
+    
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+      }
+    });
 
     // Add click handlers to all cards
     agentCards.forEach(card => {
@@ -249,11 +495,10 @@
           const cardTitle = card.querySelector('h2').textContent;
           return normalizeAgentName(cardTitle) === agentParam;
         });
-
-        // If found, scroll to it and open it
+        
         if (targetCard) {
-          targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(() => handleCardClick(targetCard), 500);
+          // Simulate a click on the card
+          handleCardClick(targetCard);
         }
       }
     });

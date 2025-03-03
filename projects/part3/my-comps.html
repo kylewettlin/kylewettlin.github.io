@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>Valorant Comps - My Comps</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <!-- Header & Navigation -->
   <header class="site-header">
     <nav class="navbar">
+      <div class="hamburger-menu">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
       <ul class="navbar-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="my-comps.html" class="active">My Comps</a></li>
@@ -24,54 +30,24 @@
     <h1 class="agent-list-title">My Compositions</h1>
     <hr class="agent-list-divider">
 
-    <div class="comp-item">
-      <div class="comp-title">
-        <h2>Split</h2>
+    <!-- Empty State Placeholder - will be hidden when compositions exist -->
+    <div id="empty-comps-state" class="empty-comps-state">
+      <div class="empty-state-icon">
+        <img src="images/agents/Jett.png" alt="Empty State Icon">
       </div>
-      <div class="comp-agents">
-        <a href="agent-list.html?agent=Jett">
-          <img src="images/agents/Jett.png" alt="Jett">
-        </a>
-        <a href="agent-list.html?agent=Omen">
-          <img src="images/agents/Omen.png" alt="Omen">
-        </a>
-        <a href="agent-list.html?agent=Sage">
-          <img src="images/agents/Sage.png" alt="Sage">
-        </a>
-        <a href="agent-list.html?agent=Breach">
-          <img src="images/agents/Breach.png" alt="Breach">
-        </a>
-        <a href="agent-list.html?agent=Raze">
-          <img src="images/agents/Raze.png" alt="Raze">
-        </a>
-      </div>
-    </div>
+      <h2>No Compositions Yet</h2>
+      <p>You haven't created any team compositions yet.</p>
+      <p>Use the button down below to navigate to the composition builder!</p>
+      
+      
+      <a href="build-comps.html" class="create-comp-button">
+        Create Your First Composition
+        <span class="button-arrow">→</span>
+      </a>
+      
 
-    <div class="comp-item">
-      <div class="comp-title">
-        <h2>Ascent</h2>
-      </div>
-      <div class="comp-agents">
-        <a href="agent-list.html?agent=Cypher">
-          <img src="images/agents/Cypher.png" alt="Cypher">
-        </a>
-        <a href="agent-list.html?agent=Sova">
-          <img src="images/agents/Sova.png" alt="Sova">
-        </a>
-        <a href="agent-list.html?agent=Kayo">
-          <img src="images/agents/Kayo.png" alt="KAY/O">
-        </a>
-        <a href="agent-list.html?agent=Sage">
-          <img src="images/agents/Sage.png" alt="Sage">
-        </a>
-        <a href="agent-list.html?agent=Jett">
-          <img src="images/agents/Jett.png" alt="Jett">
-        </a>
-      </div>
-    </div>
-
-    <!-- Add more .comp-item sections as desired -->
-  </main>
+    <!-- User's compositions will be displayed here -->
+  
 
   <footer class="site-footer">
     <p>© 2025 Valorant Comps. All rights reserved.</p>
@@ -80,5 +56,26 @@
   <!-- Add before closing body tag -->
   <script src="scripts/compManager.js"></script>
   <script src="scripts/myComps.js"></script>
+  
+  <!-- Script to toggle empty state visibility -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedComps = document.getElementById('saved-comps');
+      const emptyState = document.getElementById('empty-comps-state');
+      
+      // Check if there are any compositions (for demo, we're checking for comp-item elements)
+      // In a real app, this would check a database or localStorage
+      const hasCompositions = savedComps.querySelectorAll('.comp-item').length > 0;
+      
+      // Show/hide appropriate elements
+      if (hasCompositions) {
+        emptyState.style.display = 'none';
+        savedComps.style.display = 'block';
+      } else {
+        emptyState.style.display = 'block';
+        savedComps.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>

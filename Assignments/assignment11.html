@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 11 - Pizza Classes</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="assignment11.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Assignment 11</h1>
+        <h2>Classes</h2>
+        
+        <div id="pizza-container" class="pizza-grid">
+        </div>
+    </div>
+    
+    <div id="pizza-modal" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+            <div class="w3-container">
+                <span onclick="document.getElementById('pizza-modal').style.display='none'" 
+                      class="w3-button w3-display-topright">&times;</span>
+                <div id="modal-content" class="modal-details">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assignment11.js"></script>
+</body>
+</html> 

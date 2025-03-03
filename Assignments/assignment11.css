@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #555;
+}
+
+.pizza-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f9e8be;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.pizza-section {
+    margin: 10px;
+    cursor: pointer;
+    text-align: center;
+    width: 200px;
+}
+
+.pizza-section h3 {
+    margin-bottom: 10px;
+    color: #b33c00;
+}
+
+.pizza-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.pizza-img:hover {
+    transform: scale(1.05);
+}
+
+.attribution {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Modal Dialog Styling */
+.w3-modal-content {
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.w3-modal-content .w3-container {
+    padding: 0;
+}
+
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.modal-header {
+    color: white;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    margin: -20px -20px 20px -20px;
+}
+
+.modal-pizza-img {
+    max-width: 300px;
+    border-radius: 10px;
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.modal-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.label {
+    font-weight: bold;
+    color: #666;
+}
+
+.value {
+    color: #333;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate-animation {
+    animation: rotate 1s ease-in-out;
+} 

@@ -1038,3 +1038,172 @@
     }
   }
   
+  /* ---------------------------
+     CONTACT PAGE
+  --------------------------- */
+  .contact-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .contact-title {
+    text-align: center;
+    color: #ff4655;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+  }
+  
+  .contact-divider {
+    width: 100px;
+    margin: 0 auto 2rem;
+    border: 0;
+    height: 2px;
+    background-color: #ff4655;
+  }
+  
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .contact-form-section,
+  .contact-iframe-section {
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form-section h2,
+  .contact-iframe-section h2 {
+    color: #ff4655;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  /* Form styles */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    color: #e0e0e0;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #ff4655;
+    box-shadow: 0 0 0 2px rgba(255, 70, 85, 0.3);
+  }
+  
+  .submit-btn {
+    background-color: #ff4655;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
+    align-self: flex-start;
+  }
+  
+  .submit-btn:hover {
+    background-color: #e63e4c;
+  }
+  
+  /* Messages styles */
+  #form-messages {
+    margin-bottom: 1.5rem;
+  }
+  
+  .message {
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: none;
+  }
+  
+  .success-message {
+    background-color: rgba(76, 175, 80, 0.2);
+    border: 1px solid #4CAF50;
+    color: #C8E6C9;
+  }
+  
+  .error-message {
+    background-color: rgba(244, 67, 54, 0.2);
+    border: 1px solid #F44336;
+    color: #FFCDD2;
+  }
+  
+  /* iFrame Container */
+  .iframe-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 8px;
+    background-color: #1a1a1a;
+  }
+  
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 900px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+    
+    .contact-iframe-section {
+      order: -1; /* Show iframe first on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-form-section,
+    .contact-iframe-section {
+      padding: 1.5rem;
+    }
+    
+    .submit-btn {
+      width: 100%;
+    }
+    
+    .contact-title {
+      font-size: 2rem;
+    }
+  }
+  
